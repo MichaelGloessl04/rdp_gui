@@ -1,13 +1,18 @@
 $theme-colors: (
-  "primary": #bebe0f,
-  "secondary": rgb(162, 150, 12),
+  "primary": #6e6e6e,
+  "secondary": rgb(82, 82, 82),
 
   
-  "danger": #ff4136,
+  "danger": #3a3a3a,
 );
 
 @import 'bootstrap/scss/bootstrap.scss';
 
 body {
-    background-color: #ba804d;
+    background-color: #313131;
+    color: rgb(245, 245, 245);
+}
+
+h1 {
+    color: rgb(245, 245, 245);
 }
