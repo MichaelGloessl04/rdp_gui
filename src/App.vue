@@ -26,7 +26,9 @@ export default {
   mounted() {
     this.get_types()
     this.get_values().then((data) => {
+      console.log(data)
       this.values = data
+      console.log(this.values)
     })
     // this.involker = new Involker();
     this.involker.register("test", ConcreteHelloCommand)
@@ -87,7 +89,6 @@ export default {
         axios
           .get(url, { params: params })
           .then((result) => {
-            // console.log('Got values: ', result.data)
             accept(result.data)
           })
           .catch((error) => {
