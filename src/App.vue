@@ -3,6 +3,7 @@ import axios from 'axios'
 import InputBar from './components/InputBar.vue'
 import ValuesDisplay from './components/ValuesDisplay.vue'
 import TypesDisplay from './components/TypesDisplay.vue'
+import AverageDisplay from './components/AverageDisplay.vue'
 
 import { ValueType } from './scripts/value_type'
 import { Value } from './scripts/value'
@@ -103,6 +104,7 @@ export default {
 </script>
 
 <template>
+  <AverageDisplay/>
   <div class="container p-1">
     <h1 class="row">RDP</h1>
     <InputBar @search="update_search" />
