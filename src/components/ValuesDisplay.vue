@@ -2,11 +2,11 @@
 import { Value } from '@/scripts/value'
 
 export default {
-  props: ['values', 'value_types'],
+  props: ['values', 'value_types', 'order', 'asc'],
   setup(props) {
     console.log(props.values)
   },
-  emits: ['rename'],
+  emits: ['set-order'],
   methods: {
     getTypeName(value: Value) {
       for (var i = 0; i < this.value_types.length; i++) {
@@ -40,12 +40,13 @@ export default {
       data-bs-toggle="tooltip"
       data-bs-placement="top"
       data-bs-title="Tooltip on top"
+      @click="$emit('set-order', 'time')"
     >
       time
     </div>
-    <div class="col-1">type</div>
-    <div class="col-2">value</div>
-    <div class="col">device</div>
+    <div class="col-1" @click="$emit('set-order', 'value_type_id')">type</div>
+    <div class="col-2" @click="$emit('set-order', 'value')">value</div>
+    <div class="col"  @click="$emit('set-order', 'device_id')">device</div>
   </div>
   <div class="row bg-secondary rounded mt-1" v-for="value in values" :key="value">
     <div class="col-2">
