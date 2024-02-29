@@ -43,10 +43,29 @@ export default {
       @click="$emit('set-order', 'time')"
     >
       time
+      <template v-if="order === 'time'">
+        <i class="bi bi-caret-down-fill" title="Show TypeEditor" v-if="asc"></i>
+        <i class="bi bi-caret-up-fill" title="Hide TypeEditor" v-else></i>
+      </template>
     </div>
-    <div class="col-1" @click="$emit('set-order', 'value_type_id')">type</div>
-    <div class="col-2" @click="$emit('set-order', 'value')">value</div>
-    <div class="col"  @click="$emit('set-order', 'device_id')">device</div>
+    <div class="col-1" @click="$emit('set-order', 'value_type_id')">type
+      <template v-if="order === 'value_type_id'">
+        <i class="bi bi-caret-down-fill" title="Show TypeEditor" v-if="asc"></i>
+        <i class="bi bi-caret-up-fill" title="Hide TypeEditor" v-else></i>
+      </template>
+    </div>
+    <div class="col-2" @click="$emit('set-order', 'value')">value
+      <template v-if="order === 'value'">
+        <i class="bi bi-caret-down-fill" title="Show TypeEditor" v-if="asc"></i>
+        <i class="bi bi-caret-up-fill" title="Hide TypeEditor" v-else></i>
+      </template>
+    </div>
+    <div class="col"  @click="$emit('set-order', 'device_id')">device
+      <template v-if="order === 'device_id'">
+        <i class="bi bi-caret-down-fill" title="Show TypeEditor" v-if="asc"></i>
+        <i class="bi bi-caret-up-fill" title="Hide TypeEditor" v-else></i>
+      </template>
+    </div>
   </div>
   <div class="row bg-secondary rounded mt-1" v-for="value in values" :key="value">
     <div class="col-2">

@@ -29,9 +29,7 @@ export default {
   mounted() {
     this.get_types()
     this.get_values().then((data) => {
-      console.log(data)
       this.values = data
-      console.log(this.values)
     })
     // this.involker = new Involker();
     this.involker.register("test", ConcreteHelloCommand)
@@ -110,12 +108,8 @@ export default {
       } else {
         this.asc = !this.asc;
       }
-      console.log(this.asc);
-      console.log(this.order);
       this.get_values().then((data) => {
-        console.log(data)
         this.values = data
-        console.log(this.values)
       })
     }
   }
