@@ -107,8 +107,12 @@ onMounted(() => {
   padding: 40px;
   padding-top: 0px;
   margin: 20px;
-  background-color: rgb(0,0,0,0.5);
   border-radius: 10px;
+  background: rgba(0, 0, 0, 0.43);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.3px);
+  -webkit-backdrop-filter: blur(7.3px);
+  border: 1px solid rgba(0, 0, 0, 0.21);
 }
 .avg {
   text-align: center;
