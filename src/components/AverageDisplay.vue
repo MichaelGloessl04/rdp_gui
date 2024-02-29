@@ -4,7 +4,7 @@
       <div class="col" v-if="isLoading">Loading...</div>
       <div class="col" v-else>
         <div class="row">
-          <div class="col">{{ average_value.toFixed(2) }} {{ selected.type_unit }}</div>
+          <div class="avg">{{ average_value.toFixed(2) }} {{ selected.type_unit }}</div>
         </div>
         <div class="row">
           <div class="col">
@@ -16,7 +16,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <input type="checkbox" id="checkbox" v-model="checked" />
+            <input type="checkbox" class="check" id="checkbox" v-model="checked" />
             <label for="checkbox">Show Date Range</label>
           </div>
         </div>
@@ -102,11 +102,21 @@ onMounted(() => {
 
 <style>
 .box {
-    position: fixed;
-    right: 0;
-    padding: 40px;
-    margin: 20px;
-    background-color: rgb(0,0,0,0.5);
-    border-radius: 10px;
+  position: fixed;
+  right: 0;
+  padding: 40px;
+  padding-top: 0px;
+  margin: 20px;
+  background-color: rgb(0,0,0,0.5);
+  border-radius: 10px;
+}
+.avg {
+  text-align: center;
+  font-size: 45px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.check {
+  margin-right: 5px;
 }
 </style>
