@@ -104,8 +104,8 @@ onMounted(() => {
 .box {
   position: fixed;
   right: 0;
-  padding: 40px;
-  padding-top: 0px;
+  padding: 25px;
+  padding-top: 0;
   margin: 20px;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.43);
@@ -118,7 +118,6 @@ onMounted(() => {
   text-align: center;
   font-size: 45px;
   font-weight: 500;
-  margin-top: 10px;
 }
 .check {
   margin-right: 5px;
