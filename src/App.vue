@@ -3,6 +3,7 @@ import axios from 'axios'
 import InputBar from './components/InputBar.vue'
 import ValuesDisplay from './components/ValuesDisplay.vue'
 import TypesDisplay from './components/TypesDisplay.vue'
+import AverageDisplay from './components/AverageDisplay.vue'
 
 import { ValueType } from './scripts/value_type'
 import { Value } from './scripts/value'
@@ -21,7 +22,9 @@ export default {
       filter_start : '',
       filter_end : '',
       filter_type : '',
-      involker: new Involker(this)
+      involker: new Involker(this),
+      order: 'time',
+      asc: true
     }
   },
   mounted() {
@@ -84,11 +87,12 @@ export default {
         if (this.filter_start != '') {
           params['start']=this.filter_start
         }
+        params['order'] = this.order;
+        params['asc'] = String(this.asc);
         console.log('Trying to get url', url)
         axios
           .get(url, { params: params })
           .then((result) => {
-            // console.log('Got values: ', result.data)
             accept(result.data)
           })
           .catch((error) => {
@@ -97,17 +101,34 @@ export default {
           })
       })
       return promise
+    },
+    set_order(new_order: string) {
+      if (this.order !== new_order) {
+        this.order = new_order;
+        this.asc = true;
+      } else {
+        this.asc = !this.asc;
+      }
+      this.get_values().then((data) => {
+        this.values = data
+      })
     }
   }
 }
 </script>
 
 <template>
+  <AverageDisplay/>
   <div class="container p-1">
     <h1 class="row">RDP</h1>
     <InputBar @search="update_search" />
     <AddValue/>
     <TypesDisplay :value_types="value_types" @update_type="get_types" />
-    <ValuesDisplay :values="values" :value_types="value_types" />
+    <ValuesDisplay 
+      :values="values"
+      :value_types="value_types"
+      :order="order"
+      :asc="asc"
+      @set-order="set_order"/>
   </div>
 </template>
