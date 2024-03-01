@@ -23,6 +23,11 @@ export default {
         }
       }
       return 'XXX'
+    },
+    formatTime(timestamp:any) {
+      const date = new Date(timestamp * 1000);
+      const options = { timeZone: 'UTC', hour12: false };
+      return date.toLocaleString('en-US', options);
     }
   }
 }
@@ -39,15 +44,17 @@ export default {
       time
     </div>
     <div class="col-1">type</div>
-    <div class="col">value</div>
+    <div class="col-2">value</div>
+    <div class="col">device</div>
   </div>
   <div class="row bg-secondary rounded mt-1" v-for="value in values" :key="value">
     <div class="col-1">
-      {{ value.time }}
+      {{ formatTime(value.time) }}
     </div>
     <div class="col-1">
       {{ getTypeName(value) }}
     </div>
-    <div class="col">{{ value.value.toFixed(2) }} {{ getUnit(value) }}</div>
+    <div class="col-2">{{ value.value.toFixed(2) }} {{ getUnit(value) }}</div>
+    <div class="col-1">{{ value.device_id }}</div>
   </div>
 </template>
